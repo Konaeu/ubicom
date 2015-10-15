@@ -25,3 +25,8 @@ Route::get('/news', function()
 {
 	return View::make('home.news');
 });
+
+Route::get('/research-detail', function()
+{
+	return View::make('home.research-detail');
+});

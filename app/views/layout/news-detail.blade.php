@@ -6,16 +6,16 @@
         <div class="container">
         <div class="row">
             <div class="col-md-12">
-            <h2 class="section-title left">科研方向</h2>
+            <h2 class="section-title left">实验室新闻</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-md-2 col-sm-3 detail-filter">
-            <ul id="filters" class="folio-filters">
-                <li class=""><a href="#" data-filter=".webdesign">所有研究项目</a></li>
-                <li class=""><a href="#" data-filter=".photography">正在研究项目</a></li>
-                <li class=""><a href="#" data-filter=".branding">已发表文献</a></li>
-                <li class=""><a href="#" data-filter=".award">获奖情况</a></li>
+            <ul id="filters" class="col-md-12 col-sm-12 folio-filters">
+                <li class=""><a href="#" data-filter=".webdesign">最新新闻</a></li>
+                <li class=""><a href="#" data-filter=".photography">最热新闻</a></li>
+                <li class=""><a href="#" data-filter=".branding">实验室活动</a></li>
+                <li class=""><a href="#" data-filter=".award">周报</a></li>
             </ul>
             </div>
             <div class='details-list col-md-10 col-sm-9'>
@@ -84,7 +84,8 @@
                  <div class="details-item col-md-6 col-sm-6 ">
                     <!--<div class="col-sm-4">
                         <img class="img-responsive" src="images/templatemo_image_10.jpg" alt="image 10" />
-                    </div>-->              
+                    </div>-->
+                                   
                         <h2 class="feature-title">
                             <span></span>
                             <a class='title-link' href='#'>无线体域网中的资源分配策略</a>
@@ -100,9 +101,12 @@
                              并传输给中心节点进行处理。中心节点可以进一步将数据传输给远程服务器存储和处理。<br />
                             <!--<a href="#" class="btn btn-default margin_top">read more</a>-->
                         </p>
-                </div> 
-                
-            </div><!--details-list-->
+                </div>
+                 
+                 
+                 
+
+            </div><!--research-details-->
         </div>  <!--row--> 
     </section>
 

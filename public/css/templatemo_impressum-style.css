@@ -1017,8 +1017,9 @@ label {
 }
 
 #portfolio .details-item{
-  text-overflow:ellipsis;
+   
   overflow:hidden;
+ 
   height:250px; 
   margin-bottom: 20px;
   margin-left: 0px;
