@@ -34,3 +34,11 @@ Route::get('/research-detail', function()
 {
 	return View::make('home.research-detail');
 });
+
+Route::get('/edit',function(){
+	return View::make('home.edit');
+});
+
+Route::post('/edit','HomeController@saveNews');
+
+

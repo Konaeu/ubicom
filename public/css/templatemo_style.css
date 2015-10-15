@@ -51,12 +51,12 @@ textarea,
 }
 
 .blue {
-	color: #39F;
+	color: #06F;
 	font-weight: normal;
 }
 
 .green {
-	color: #0C0;
+	color: #090;
 	font-weight: normal;
 }
 
@@ -136,7 +136,7 @@ hr {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Novecentosanswide-Bold", sans-serif;
-  color: #2c2c2c;
+  color: #222222;
 }
 
 h2 {
@@ -315,7 +315,7 @@ label {
 }
 
 #header .logo span{
-  font-size: 1.1em;
+  font-size: 1.2em;
   color: #aaaaaa;
   font-weight: 700;
 }
@@ -517,7 +517,7 @@ label {
   text-transform: uppercase;
   padding-bottom: 8px;
   border-bottom: 1px solid #dbdbdb;
-  margin: 0 0 10px 0;
+  margin: 0 0 20px 0;
   width: 100%;
   font-weight: 600;
   font-family: "微软雅黑","Open Sans", Helvetica, Arial, Heveltica Neue, sans-serif,"Microsoft YaHei","黑体";
@@ -620,14 +620,14 @@ label {
 }
 
 .feature-title {
-  color:#2c2c2c;
   font-size: 1.4em;
   font-family: "微软雅黑","Open Sans", Helvetica, Arial, Heveltica Neue, sans-serif,"Microsoft YaHei","黑体";
   margin: 0 0 10px 0;
 }
 
 .feature-title a{
-  color:#2c2c2c;
+  color:#424040;
+  font-weight: 600;
 }
 .feature-title a:hover{
   color:#8E8383;  
@@ -638,18 +638,12 @@ label {
   height: 3px;
   background-color: gainsboro;
   margin-bottom: 10px;
-  margin-top: 15px;
 }
 
-
-.details-item .feature-title a:hover{
-  color:#8E8383;  
-}
 .feature-info {
-  height: 200px;
-  overflow: hidden;
   float: left;
   width: 85%;
+  text-overflow:ellipsis;
 }
 
 /* ABOUT SECTION */
@@ -1012,84 +1006,21 @@ label {
   content: " - ";
 }
 
-/*item detail*/
-.item-content{
-  line-height: 
-  background: white;
-  padding: 1em;
-  font-size: 1.2em;
-  overflow: hidden;
-
-}
-
-.item-title{
-  font-size: 2em;
-  font-weight: 700;
-}
-
-.item-content-para{
-  text-indent: 20px;
-  line-height:24px;
-  letter-spacing: 0.7px;
-}
- 
-.item-content .item-meta{
-  font-size: 0.8em;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-.tags-link{
-  color:#959595;
-}
-.item-image {
-  margin: 10px 0px 10px 0px;
-  padding: 0px;
-  float:left;
-  overflow: hidden;
-  zoom: 1;
-}
- 
-/*
-blockquote,q {
-  quotes: none;
-}
-
-blockquote:before,
-blockquote:after {
-  content: '';
-  content: none;
-}
-
-blockquote {
-  margin: 10px 10px 10px 0px;
-  background-image: url(../images/quote.png);
-  background-repeat: no-repeat;
-  background-position: top left;
-  padding-left: 40px;
-  font-size: 1.2em;
-
-  font-family: "微软雅黑","Roboto Slab", serif;
-}
-*/
 /* PORTFOLIO SECTION */
 #portfolio{
   margin-top: 60px;
 }
 
-#portfolio .details-item{   
-  overflow:hidden;
-  height:250px; 
+#portfolio .research-item{
   margin-bottom: 20px;
   margin-left: 0px;
 }
-
-
-
 #portfolio a{
+  color: black;
    text-decoration: none;
 }
 #portfolio p {
-    color: #959595;
+    color: #000;
     text-align: justify;
     padding: 0;
 }
@@ -1100,9 +1031,6 @@ blockquote {
   margin-top:0px;
   margin-bottom: 6px;
   line-height:30px;
-}
-.details-item .feature-title{
-  font-weight: 700;
 }
 .folio-thumb {
   position: relative;
@@ -1188,7 +1116,6 @@ blockquote {
 .folio-filters {
   width: 100%;
   text-align: left;
-  font-weight: 600;
   margin-bottom: 20px;
   margin-top: 10px;
 }
@@ -1198,7 +1125,6 @@ blockquote {
 .folio-filters li {
   display: inline-block;
   margin-left: 10px;
-  margin-bottom: 12px;
 }
 .folio-filters li a {
   display: block;
@@ -1530,7 +1456,7 @@ html[xmlns] .slides {
 /* FlexSlider Default Theme
 *********************************/
 .flexslider {  
-  margin: 0 0% 0 0%;/*0 8% 0 8%*/
+  margin: 0 8% 0 8%;
   background: white;
   border: none;
   position: relative;
@@ -1675,17 +1601,9 @@ html[xmlns] .slides {
 }
 
 @media screen and (max-width: 860px) {
- .feature-info {
-  height: 200px;
-  overflow: hidden;
-  float: left;
-  width: 85%;
-}
- 
-  #portfolio{
-    margin-top: 112px;
+  .flexslider{
+    margin: 0 2% 0 2%;
   }
-
   #header .logo {
     text-align: center;
     padding: 20px;
@@ -2212,7 +2130,7 @@ img.mfp-img {
 }
 
 @media screen and (max-width: 768px) {
- 
+
   .folio-thumb img {
       width: 100%;
       background-size: cover;
