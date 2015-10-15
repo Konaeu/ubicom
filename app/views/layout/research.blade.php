@@ -25,7 +25,7 @@
                     </div>-->         
                         <h2 class="feature-title">
                             <span></span>
-                            <a class='title-link' href='#'>无线体域网中的资源分配策略</a>
+                            <a class='title-link' href={{URL::to('/research-detail')}}>无线体域网中的资源分配策略</a>
                         </h2>
                         
                         <p>                        
@@ -46,7 +46,7 @@
                                    
                         <h2 class="feature-title">
                             <span></span>
-                            <a href='#' class='title-link'>无线体域网中的资源分配策略</a>
+                            <a href={{URL::to('/research-detail')}} class='title-link'>无线体域网中的资源分配策略</a>
                         </h2>
                         
                         <p>                        
@@ -67,7 +67,7 @@
                                    
                         <h2 class="feature-title">
                             <span></span>
-                            <a class='title-link' href='#'>无线体域网中的资源分配策略</a>
+                            <a class='title-link' href={{URL::to('/research-detail')}}>无线体域网中的资源分配策略</a>
                         </h2>
                         
                         <p>                        
@@ -87,7 +87,7 @@
                     </div>-->              
                         <h2 class="feature-title">
                             <span></span>
-                            <a class='title-link' href='#'>无线体域网中的资源分配策略</a>
+                            <a class='title-link' href={{URL::to('/research-detail')}}>无线体域网中的资源分配策略</a>
                         </h2>
                         
                         <p>                        

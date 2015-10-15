@@ -51,12 +51,12 @@ textarea,
 }
 
 .blue {
-	color: #06F;
+	color: #39F;
 	font-weight: normal;
 }
 
 .green {
-	color: #090;
+	color: #0C0;
 	font-weight: normal;
 }
 
@@ -136,7 +136,7 @@ hr {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Novecentosanswide-Bold", sans-serif;
-  color: #222222;
+  color: #2c2c2c;
 }
 
 h2 {
@@ -1011,19 +1011,71 @@ label {
   content: " - ";
 }
 
+/*item detail*/
+.item-content{
+  background: white;
+  padding: 1em;
+  font-size: 1.2em;
+  overflow: hidden;
+}
+
+.item-title{
+  font-size: 2em;
+  font-weight: 700;
+}
+
+ 
+.item-content .item-meta{
+  font-size: 0.8em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.tags-link{
+  color:#959595;
+}
+.item-image {
+  margin: 10px 0px 10px 0px;
+  padding: 0px;
+  overflow: hidden;
+  zoom: 1;
+}
+.item-image img{
+    display: inline-block;
+    width: 100%;
+}
+blockquote,q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after {
+  content: '';
+  content: none;
+}
+
+blockquote {
+  margin: 10px 10px 10px 0px;
+  background-image: url(../images/quote.png);
+  background-repeat: no-repeat;
+  background-position: top left;
+  padding-left: 40px;
+  font-size: 1.2em;
+
+  font-family: "微软雅黑","Roboto Slab", serif;
+}
+
 /* PORTFOLIO SECTION */
 #portfolio{
   margin-top: 60px;
 }
 
-#portfolio .details-item{
-   
+#portfolio .details-item{   
   overflow:hidden;
- 
   height:250px; 
   margin-bottom: 20px;
   margin-left: 0px;
 }
+
 
 
 #portfolio a{
@@ -2147,7 +2199,10 @@ img.mfp-img {
 }
 
 @media screen and (max-width: 768px) {
-
+  blockquote {
+    padding-left: 30px;
+    font-size: 1em;
+  }
   .folio-thumb img {
       width: 100%;
       background-size: cover;
