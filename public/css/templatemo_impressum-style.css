@@ -638,7 +638,7 @@ label {
   height: 3px;
   background-color: gainsboro;
   margin-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 
@@ -646,9 +646,10 @@ label {
   color:#8E8383;  
 }
 .feature-info {
+  height: 200px;
+  overflow: hidden;
   float: left;
   width: 85%;
-  text-overflow:ellipsis;
 }
 
 /* ABOUT SECTION */
@@ -1013,10 +1014,12 @@ label {
 
 /*item detail*/
 .item-content{
+  line-height: 
   background: white;
   padding: 1em;
   font-size: 1.2em;
   overflow: hidden;
+
 }
 
 .item-title{
@@ -1024,6 +1027,11 @@ label {
   font-weight: 700;
 }
 
+.item-content-para{
+  text-indent: 20px;
+  line-height:24px;
+  letter-spacing: 0.7px;
+}
  
 .item-content .item-meta{
   font-size: 0.8em;
@@ -1036,13 +1044,11 @@ label {
 .item-image {
   margin: 10px 0px 10px 0px;
   padding: 0px;
+  float:left;
   overflow: hidden;
   zoom: 1;
 }
-.item-image img{
-    display: inline-block;
-    width: 100%;
-}
+ 
 blockquote,q {
   quotes: none;
 }
@@ -1668,6 +1674,12 @@ html[xmlns] .slides {
 }
 
 @media screen and (max-width: 860px) {
+ .feature-info {
+  height: 200px;
+  overflow: hidden;
+  float: left;
+  width: 85%;
+}
  
   #portfolio{
     margin-top: 112px;

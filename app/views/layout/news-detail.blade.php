@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2 col-sm-3 detail-filter">
+            <div class="col-md-2 col-sm-2 detail-filter">
             <ul id="filters" class="col-md-12 col-sm-12 folio-filters">
                 <li class=""><a href="#" data-filter=".webdesign">最新新闻</a></li>
                 <li class=""><a href="#" data-filter=".photography">最热新闻</a></li>
@@ -18,90 +18,41 @@
                 <li class=""><a href="#" data-filter=".award">周报</a></li>
             </ul>
             </div>
-            <div class='details-list col-md-10 col-sm-9'>
-                <div class="details-item col-md-6 col-sm-6 ">
-                    <!--<div class="col-sm-4">
-                        <img class="img-responsive" src="images/templatemo_image_10.jpg" alt="image 10" />
-                    </div>-->         
-                        <h2 class="feature-title">
-                            <span></span>
-                            <a class='title-link' href='#'>无线体域网中的资源分配策略</a>
-                        </h2>
-                        
-                        <p>                        
-                            <i class="icon-calendar"></i> 22 April 2084 &nbsp;&nbsp; 
-                            <i class="icon-calendar"></i> 22 April 2084 &nbsp;&nbsp;                      
-                        </p>
-                        <p> 无线体域网是一种以人体为中心，由人体穿戴式传感器、人体植入式传感器和中心节点组成的新型传感器网络。人体内外的传感器节点采集人体和人体周围环境的相关信息，
-                            并传输给中心节点进行处理。中心节点可以进一步将数据传输给远程服务器存储和处理。无线体域网是一种以人体为中心，由人体穿戴式传感器、人体植入式传感器和中心节点组成的新型传感器网络。人体内外的传感器节点采集人体和人体周围环境的相关信息，
-                             并传输给中心节点进行处理。中心节点可以进一步将数据传输给远程服务器存储和处理。无线体域网是一种以人体为中心，由人体穿戴式传感器、人体植入式传感器和中心节点组成的新型传感器网络。人体内外的传感器节点采集人体和人体周围环境的相关信息，
-                             并传输给中心节点进行处理。中心节点可以进一步将数据传输给远程服务器存储和处理。<br />
-                            <!--<a href="#" class="btn btn-default margin_top">read more</a>-->
-                        </p>
+            <div class='item-info col-md-10 col-sm-10'>
+                <div class='item-content'>   
+                    <h2 class='item-title'>校领导出席2015一流大学建设系列研讨会</h2>   
+                    <div class='item-meta'>
+                        <i class="icon-user"></i> 刘志强&nbsp;&nbsp;                        
+                        <i class="icon-calendar"> </i>2015-10-15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <i class="icon-tag"> </i>
+                        <a href="#" class='tags-link'>WBAN,</a>
+                        <a href="#" class='tags-link'>分配策略,</a> 
+                        <a href="#" class='tags-link'>速率分配</a> 
+                    </div>     
+                <div class='item-content-para'>     
+                10月9日-10日，2015年一流大学建设系列研讨会暨中国大学校长联谊会在南京大学举行，来自内地及香港地区共12所知名高校的大学校长出席会议。
+                 校长万立骏、副校长张淑林一行出席了本次会议，万立骏在本次会议上当选为新一届中国大学校长联谊会理事会会长。
                 </div>
-                <div class="details-item col-md-6 col-sm-6">
-                    <!--<div class="col-sm-4">
-                        <img class="img-responsive" src="images/templatemo_image_10.jpg" alt="image 10" />
-                    </div>-->
-                                   
-                        <h2 class="feature-title">
-                            <span></span>
-                            <a href='#' class='title-link'>无线体域网中的资源分配策略</a>
-                        </h2>
-                        
-                        <p>                        
-                            <i class="icon-calendar"></i> 22 April 2084 &nbsp;&nbsp; 
-                            <i class="icon-calendar"></i> 22 April 2084 &nbsp;&nbsp;                      
-                        </p>
-                        <p> 无线体域网是一种以人体为中心，由人体穿戴式传感器、人体植入式传感器和中心节点组成的新型传感器网络。人体内外的传感器节点采集人体和人体周围环境的相关信息，
-                            并传输给中心节点进行处理。中心节点可以进一步将数据传输给远程服务器存储和处理。无线体域网是一种以人体为中心，由人体穿戴式传感器、人体植入式传感器和中心节点组成的新型传感器网络。人体内外的传感器节点采集人体和人体周围环境的相关信息，
-                             并传输给中心节点进行处理。中心节点可以进一步将数据传输给远程服务器存储和处理。无线体域网是一种以人体为中心，由人体穿戴式传感器、人体植入式传感器和中心节点组成的新型传感器网络。人体内外的传感器节点采集人体和人体周围环境的相关信息，
-                             并传输给中心节点进行处理。中心节点可以进一步将数据传输给远程服务器存储和处理。<br />
-                            <!--<a href="#" class="btn btn-default margin_top">read more</a>-->
-                        </p>
+                <div class='item-content-para'>     
+                10月9日-10日，2015年一流大学建设系列研讨会暨中国大学校长联谊会在南京大学举行，来自内地及香港地区共12所知名高校的大学校长出席会议。
+                 校长万立骏、副校长张淑林一行出席了本次会议，万立骏在本次会议上当选为新一届中国大学校长联谊会理事会会长。
                 </div>
-                <div class="details-item col-md-6 col-sm-6 ">
-                    <!--<div class="col-sm-4">
-                        <img class="img-responsive" src="images/templatemo_image_10.jpg" alt="image 10" />
-                    </div>-->
-                                   
-                        <h2 class="feature-title">
-                            <span></span>
-                            <a class='title-link' href='#'>无线体域网中的资源分配策略</a>
-                        </h2>
-                        
-                        <p>                        
-                            <i class="icon-calendar"></i> 22 April 2084 &nbsp;&nbsp; 
-                            <i class="icon-calendar"></i> 22 April 2084 &nbsp;&nbsp;                      
-                        </p>
-                        <p> 无线体域网是一种以人体为中心，由人体穿戴式传感器、人体植入式传感器和中心节点组成的新型传感器网络。人体内外的传感器节点采集人体和人体周围环境的相关信息，
-                            并传输给中心节点进行处理。中心节点可以进一步将数据传输给远程服务器存储和处理。无线体域网是一种以人体为中心，由人体穿戴式传感器、人体植入式传感器和中心节点组成的新型传感器网络。人体内外的传感器节点采集人体和人体周围环境的相关信息，
-                             并传输给中心节点进行处理。中心节点可以进一步将数据传输给远程服务器存储和处理。无线体域网是一种以人体为中心，由人体穿戴式传感器、人体植入式传感器和中心节点组成的新型传感器网络。人体内外的传感器节点采集人体和人体周围环境的相关信息，
-                             并传输给中心节点进行处理。中心节点可以进一步将数据传输给远程服务器存储和处理。<br />
-                            <!--<a href="#" class="btn btn-default margin_top">read more</a>-->
-                        </p>
+                <div class='item-image  col-sm-12'>
+                    {{HTML::image('/images/templatemo_thumb_image_4.jpg')}}                     
                 </div>
-                 <div class="details-item col-md-6 col-sm-6 ">
-                    <!--<div class="col-sm-4">
-                        <img class="img-responsive" src="images/templatemo_image_10.jpg" alt="image 10" />
-                    </div>-->
-                                   
-                        <h2 class="feature-title">
-                            <span></span>
-                            <a class='title-link' href='#'>无线体域网中的资源分配策略</a>
-                        </h2>
-                        
-                        <p>                        
-                            <i class="icon-calendar"></i> 22 April 2084 &nbsp;&nbsp; 
-                            <i class="icon-calendar"></i> 22 April 2084 &nbsp;&nbsp;                      
-                        </p>
-                        <p> 无线体域网是一种以人体为中心，由人体穿戴式传感器、人体植入式传感器和中心节点组成的新型传感器网络。人体内外的传感器节点采集人体和人体周围环境的相关信息，
-                            并传输给中心节点进行处理。中心节点可以进一步将数据传输给远程服务器存储和处理。无线体域网是一种以人体为中心，由人体穿戴式传感器、人体植入式传感器和中心节点组成的新型传感器网络。人体内外的传感器节点采集人体和人体周围环境的相关信息，
-                             并传输给中心节点进行处理。中心节点可以进一步将数据传输给远程服务器存储和处理。无线体域网是一种以人体为中心，由人体穿戴式传感器、人体植入式传感器和中心节点组成的新型传感器网络。人体内外的传感器节点采集人体和人体周围环境的相关信息，
-                             并传输给中心节点进行处理。中心节点可以进一步将数据传输给远程服务器存储和处理。<br />
-                            <!--<a href="#" class="btn btn-default margin_top">read more</a>-->
-                        </p>
+                 <div class='item-content-para'>     
+                10月9日-10日，2015年一流大学建设系列研讨会暨中国大学校长联谊会在南京大学举行，来自内地及香港地区共12所知名高校的大学校长出席会议。
+                 校长万立骏、副校长张淑林一行出席了本次会议，万立骏在本次会议上当选为新一届中国大学校长联谊会理事会会长。
                 </div>
+             
+                 <blockquote>
+                    <div class='item-content-para'> 
+                       统筹推进世界一流大学和一流学科建设，是党和国家在新时期的重大战略部署。
+                       作为国家战略资源的一流大学群体，在响应国家战略、加快推进建设的同时，也要坚持“道路自信”，坚持精准定位、保持特色，并对“新常态”下一流大学的建设发展、评价体系等有充分的理解和认识。             
+                    </div>
+                 </blockquote>
+                 </div><!--item-content-->  
+            </div><!--item-info-->
                  
                  
                  
