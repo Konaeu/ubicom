@@ -20,9 +20,11 @@ class HomeController extends BaseController {
 	}
 	public function saveNews(){
 		$title=Input::get('title');
+		$abstract=Input::get('abstract');
 		$content=Input::get('content');
 		News::insert([
 			'title'=>$title,
+			'abstract'=>$abstract,
 			'content'=>$content
 			]);
 		return $content;

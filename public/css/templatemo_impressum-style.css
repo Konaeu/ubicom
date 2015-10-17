@@ -1082,7 +1082,38 @@ blockquote {
   margin-bottom: 20px;
   margin-left: 0px;
 }
+#portfolio .news-edit label{
+  
+}
+.sub-text{
+  margin-bottom:10px; 
+  min-height: 30px;
+}
+.news-edit input{
+  margin-bottom:10px; 
+}
 
+.news-edit form{
+  padding-bottom: 0px;
+}
+.sub-label{
+  color:#2c2c2c;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding-left: 0;
+}
+.sub-text{
+  height: 100px;
+  overflow-y:visible;
+}
+#sub-title {
+    height: 40px;
+    overflow-y: visible;
+}
+ 
+.sub-area{
+  margin-top: 20px;
+}
 
 
 #portfolio a{
