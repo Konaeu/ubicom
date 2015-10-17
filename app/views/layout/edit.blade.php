@@ -6,16 +6,18 @@
         <div class="container">
         <div class="row">
             <div class="col-md-12">
-            <h2 class="section-title left">新闻编辑</h2>
+            <h2 class="section-title left">{{$cat_title}}</h2>
             </div>
         </div>
         <div class=" row col-md-12">
         @section('content')
 		    	{{Form::open(['url'=>'/edit'])}}
+		    		{{Form::text('id',$item_id,['style'=>'display:none'])}}
+		    		{{Form::text('cat_id',$cat_id,['style'=>'display:none'])}}
 		    		{{Form::label('title','标题:',['class'=>'sub-label'])}} 
-		    		{{Form::textarea('title','',['id'=>'sub-title','class'=>'sub-text'])}}
+		    		{{Form::textarea('title',$item_title,['id'=>'sub-title','class'=>'sub-text'])}}
 		    		{{Form::label('abstract','摘要:',['class'=>'sub-label'])}} 
-		    		{{Form::textarea('abstract','',['id'=>'sub-abstract','class'=>'sub-text'])}}		
+		    		{{Form::textarea('abstract',$item_abstract,['id'=>'sub-abstract','class'=>'sub-text'])}}		
 
         </div>
 
@@ -74,7 +76,7 @@
 
 		    </div>
 		    <div id="editor">
-
+		    	{{$item_content}}
 		    </div>	    
 		</div>
 		<div class='row col-md-12 col-sm-12 sub-area'>
@@ -91,11 +93,6 @@
  			$("#sub-content").val(function(i, oriVal){ 				
  				return $("#editor").html();
  			});
- 			/* 
- 			$("#sub-title").val(function(i, oriVal){
- 				return "hello world";
- 			});
-			*/
  		});
 
  	});

@@ -24,11 +24,8 @@ Route::get('/news-detail/{id}','HomeController@newsDetail');
 
 Route::get('/member','HomeController@member');
  
+Route::get('/edit/{cat_id?}/{item_id?}','HomeController@edit');
 
-Route::get('/edit',function(){
-	return View::make('home.edit');
-});
-
-Route::post('/edit','HomeController@saveNews');
+Route::post('/edit','HomeController@saveItem');
 
 

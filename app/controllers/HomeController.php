@@ -49,18 +49,83 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+	public function edit($cat_id=0,$item_id=0){
+		if($cat_id==0){ //默认为新闻编辑
+			$item=News::find($item_id);
+			if($item){ //要是编辑文件存在，这时进行修改
+				return View::make('home.edit')->with('cat_title','新闻编辑')
+							->with('cat_id',$cat_id)
+							->with('item_id',$item->id)							
+							->with('item_title',$item->title)
+							->with('item_abstract',$item->abstract)
+							->with('item_content',$item->content);
+			}else{
+				return View::make('home.edit')->with('cat_title','新闻编辑')
+							->with('cat_id',$cat_id)
+							->with('item_id',0)
+							->with('item_title','')
+							->with('item_abstract','')
+							->with('item_content','');
+			}
 
-	
+			//return View::make('home.edit')->with('cat_title','新闻编辑');
+		}else if($cat_id==1){ //项目编辑
+			$item=Researches::find($item_id);
+			if($item){
+				return View::make('home.edit')->with('cat_title','项目编辑')
+						->with('cat_id',$cat_id)
+						->with('item_id',$item->id)
+						->with('item_title',$item->title)
+						->with('item_abstract',$item->abstract)
+						->with('item_content',$item->content);
+			}else{
 
-	public function saveNews(){
+				return View::make('home.edit')->with('cat_title','项目编辑')
+						->with('cat_id',$cat_id)
+						->with('item_id',0)
+						->with('item_title','')
+						->with('item_abstract','')
+						->with('item_content','');
+			}
+			
+		}else{
+			
+		}
+	}
+
+
+	public function saveItem(){
+		$cat_id=Input::get('cat_id');
+		$item_id=Input::get('id');		
 		$title=Input::get('title');
 		$abstract=Input::get('abstract');
 		$content=Input::get('content');
-		News::insert([
-			'title'=>$title,
-			'abstract'=>$abstract,
-			'content'=>$content
-			]);
-		return $content;
+		if($cat_id==0){
+			$item=News::find($item_id);
+		}else if($cat_id==1){
+			$item=Researches::find($item_id);
+		}
+		
+		if($item){ //表中已经存在该条目
+			$item->title=$title;
+			$item->abstract=$abstract;
+			$item->content=$content;
+			$item->save();			
+		}else{ //对已有文章进行更新
+			if($cat_id==0){
+				News::insert([
+				'title'=>$title,
+				'abstract'=>$abstract,
+				'content'=>$content
+				]);
+			}else if ($cat_id==1) {
+				Researches::insert([
+				'title'=>$title,
+				'abstract'=>$abstract,
+				'content'=>$content
+				]);
+			}
+		}
+		return View::make('/news-detail',[$item_id]);
 	}
 }
