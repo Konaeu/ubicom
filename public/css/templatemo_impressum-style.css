@@ -228,7 +228,6 @@ textarea:focus, input:focus {
   font-size: 15px;
   font-weight: 800;
   text-transform: uppercase;
-  font-family: "Novecentosanswide-Bold", sans-serif;
   text-align: center;
   cursor: pointer;
 }
@@ -1019,7 +1018,7 @@ label {
 .item-content{
   line-height: 
   background: white;
-  padding: 1em;
+  padding: 10px;
   font-size: 1.2em;
   overflow: hidden;
 
@@ -1092,9 +1091,7 @@ blockquote {
   margin-bottom: 20px;
   margin-left: 0px;
 }
-#portfolio .news-edit label{
-  
-}
+ 
 
 #portfolio .overlay-p {
     background-color: rgba(0, 200, 200, 0.9);
@@ -1105,6 +1102,39 @@ blockquote {
     width: 100%;
     height: 100%;
     opacity: 0;
+}
+.read-more{
+  padding-left: 10px;
+}
+.read-more .slide-button{
+  border: 2px solid #959595;
+  margin-top: 10px;
+  color: #959595;
+}
+.read-more .slide-button:hover {
+  border-color: #e04d47;
+  color: #e04d47;
+}
+
+.read-less .slide-button{
+  display: none;
+  border: 2px solid #959595;
+  margin-left: 10px;
+  margin-top: 10px;
+  color: #959595;
+}
+.read-less .slide-button:hover {
+  border-color: #e04d47;
+  color: #e04d47;
+}
+
+.img-circle {
+    border-radius: 10%;
+}
+.teacher-cv{
+  overflow: hidden;
+  max-height: 300px;
+  padding-top: 0px;
 }
 .sub-text{
   margin-bottom:10px; 
@@ -2280,6 +2310,9 @@ img.mfp-img {
       width: 100%;
       background-size: cover;
     }
+  .folio-thumb{
+    width:80%;
+  }
 }
 
 
