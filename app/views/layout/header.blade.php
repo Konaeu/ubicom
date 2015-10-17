@@ -88,7 +88,7 @@
             <ul class="mobile-navigation">
                 <li><a href={{URL::to('/')}}>首页</a></li>
                 <li><a href={{URL::to('/research')}}>科研进展</a></li>
-                <li><a href="#portfolio">人员构成</a></li>
+                <li><a href={{URL::to('/member')}}>人员构成</a></li>
                 <li><a href="#partners">课程主页</a></li>
                 <li><a href="#our-team">文化生活</a></li>
                 <li><a href="#contact">内部门户</a></li>
@@ -101,7 +101,7 @@
             <div class="container">
             <div class="row">                
                 <div class="col-md-4 logo">
-                    <h1><a href="#"><em>Ubi</em>Com</a></h1>
+                    <h1><a href={{URL::to('/')}}><em>Ubi</em>Com</a></h1>
                     <span>中科大泛在通信实验室</span>
                 </div> <!-- //.logo -->
                 
@@ -110,7 +110,7 @@
                     <ul id="main-nav" class="main-navigation">
                     <li class="current"><a href={{URL::to('/')}}>首页</a></li>
                     <li><a href={{URL::to('/research')}}>科研进展</a></li>
-                    <li><a href="#portfolio">人员构成</a></li>
+                    <li><a href={{URL::to('/member')}}>人员构成</a></li>
                     <li><a href="#partners">课程主页</a></li>
                     <li><a href="#our-team">文化生活</a></li>
                     <li><a href="#contact">内部门户</a></li>

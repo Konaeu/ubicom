@@ -11,29 +11,19 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('home.main');
-});
 
-Route::get('/research', function()
-{
-	return View::make('home.research');
-});
+Route::get('/','HomeController@index');
 
-Route::get('/news', function()
-{
-	return View::make('home.news');
-});
-Route::get('/news-detail', function()
-{
-	return View::make('home.news-detail');
-});
+Route::get('/research','HomeController@research');
 
-Route::get('/research-detail', function()
-{
-	return View::make('home.research-detail');
-});
+Route::get('/research-detail/{id}','HomeController@researchDetail');
+
+Route::get('/news','HomeController@news');
+
+Route::get('/news-detail/{id}','HomeController@newsDetail');
+
+Route::get('/member','HomeController@member');
+ 
 
 Route::get('/edit',function(){
 	return View::make('home.edit');
