@@ -106,26 +106,39 @@ class HomeController extends BaseController {
 			$item=Researches::find($item_id);
 		}
 		
+		 
+		
 		if($item){ //表中已经存在该条目
 			$item->title=$title;
 			$item->abstract=$abstract;
 			$item->content=$content;
-			$item->save();			
-		}else{ //对已有文章进行更新
-			if($cat_id==0){
+			$item->save();
+			if($cat_id==0)	{
+				return Redirect::to(URL::to('/news-detail',[$item_id]));
+			}else if($cat_id==1){
+				return Redirect::to(URL::to('/research-detail',[$item_id]));
+			}			 
+			
+		}else{ //对已有条目进行更新
+			if($cat_id==0){ //新闻条目
 				News::insert([
 				'title'=>$title,
 				'abstract'=>$abstract,
 				'content'=>$content
 				]);
-			}else if ($cat_id==1) {
+				$item=News::all()->last();				
+				return Redirect::to(URL::to('/news-detail',[$item->id]));				 		 
+				 
+			}else if ($cat_id==1) { //项目条目
 				Researches::insert([
 				'title'=>$title,
 				'abstract'=>$abstract,
 				'content'=>$content
 				]);
+				$item=Researches::all()->last();				
+				return Redirect::to(URL::to('/research-detail',[$item->id]));					
 			}
 		}
-		return View::make('/news-detail',[$item_id]);
+		//return View::make('/news-detail',[$item_id]);
 	}
 }
