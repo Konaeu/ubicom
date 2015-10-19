@@ -76,7 +76,7 @@
                 window.prettyPrint && prettyPrint();
               });
             </script>
-
+ 
     </head>
     <body>
         <!-- Mobile Menu -->
@@ -89,7 +89,7 @@
                 <li><a href={{URL::to('/')}}>首页</a></li>
                 <li><a href={{URL::to('/research')}}>科研进展</a></li>
                 <li><a href={{URL::to('/member')}}>人员构成</a></li>
-                <li><a href="#partners">课程主页</a></li>
+                <li><a href={{URL::to('/course')}}>课程主页</a></li>
                 <li><a href="#our-team">文化生活</a></li>
                 <li><a href="#contact">内部门户</a></li>
             </ul>
@@ -111,7 +111,8 @@
                     <li class="current"><a href={{URL::to('/')}}>首页</a></li>
                     <li><a href={{URL::to('/research')}}>科研进展</a></li>
                     <li><a href={{URL::to('/member')}}>人员构成</a></li>
-                    <li><a href="#partners">课程主页</a></li>
+                    <li><a href={{URL::to('/course')}} id='courses_list'>课程主页</a>      </li>
+
                     <li><a href="#our-team">文化生活</a></li>
                     <li><a href="#contact">内部门户</a></li>
                     </ul>

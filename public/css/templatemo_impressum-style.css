@@ -460,9 +460,18 @@ label {
   color: #e04d47;
   text-decoration: none;
 }
+.sub_navigation {
+  position: absolute;
+  width: 200px;
+  z-index: 9999;
+  top: 40px;
+  left: 50%;
+  margin-left: -50px;
+  text-align: center;
+  background-color: white;
+}
 
-
-
+ 
 .audio-player {
   position: absolute;
   right: 0;

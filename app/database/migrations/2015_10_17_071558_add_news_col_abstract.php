@@ -13,7 +13,7 @@ class AddNewsColAbstract extends Migration {
 	{
 		Schema::table('news', function( $table)
           {
-               $table->string('abstract')->after('title');
+               //$table->string('abstract')->after('title');
 
           });
 	}

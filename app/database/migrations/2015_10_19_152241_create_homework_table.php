@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNewsTable extends Migration {
+class CreateHomeworkTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,11 @@ class CreateNewsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('news', function(Blueprint $table)
+		Schema::create('homework', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->nullable();
-			$table->string('title',100);
-			$table->string('abstract');
-			$table->text('content');
+			$table->integer('course_id');
+			$table->text('homework_item');
 			$table->timestamps();
 		});
 	}
@@ -30,7 +28,7 @@ class CreateNewsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('news');
+		Schema::drop('homework');
 	}
 
 }

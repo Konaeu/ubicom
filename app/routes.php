@@ -28,4 +28,4 @@ Route::get('/edit/{cat_id?}/{item_id?}','HomeController@edit');
 
 Route::post('/edit','HomeController@saveItem');
 
-
+Route::get('/course/{course_name?}','HomeController@course');

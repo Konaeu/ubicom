@@ -44,6 +44,24 @@ class HomeController extends BaseController {
 		return View::make('home.member');
 	}
 
+	public function course($course_name='infotheory'){
+		switch ($course_name) {
+			case 'infotheory':
+				$comments=Courses::find(1)->comments;
+				$homeworks=Courses::find(1)->homework;
+				$course= Courses::find(1);
+				return View::make('home.course')->with('course',$course)
+							->with('comments',$comments)
+							->with('homeworks',$homeworks);
+
+				break;
+			
+			default:
+				# code...
+				break;
+		}	
+	}
+
 	public function showWelcome()
 	{
 		return View::make('hello');
