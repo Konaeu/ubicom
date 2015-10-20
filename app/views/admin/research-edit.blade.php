@@ -1,8 +1,7 @@
 @extends('layout.admin')
 @section('admin-content')
 <div class='item-content'>   
-        <h2 class='item-title'>项目管理</h2> 
-        
+        <h2 class='section-title left'>项目管理</h2> 
 		<table class='table table-bordered table-hover'>
 		    <thead>
 		        <tr>

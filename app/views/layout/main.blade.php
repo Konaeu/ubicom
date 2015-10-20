@@ -10,7 +10,7 @@
                     <div class="col-md-12">
                     <h1>无线体域网</h1>
                     <h2>
-                        无线体域网是一种以人体为中心，由人体穿戴式传感器、人体植入式传感器和中心节点组成的新型传感器网络。人体内外的传感器节点采集人体和人体周围环境的相关信息. 
+                        无线体域网是一种以人体为中心，由人体穿戴式传感器、人体植入式传感器和中心节点组成的新型传感器网络。人体内外的传感器节点采集人体和人体周围环境的相关信息，并传输给中心节点进行处理。中心节点可以进一步将数据传输给远程服务器存储和处理。 
                     </h2>
                     <a class="slide-button">更多详情</a>
                     </div>
@@ -79,6 +79,21 @@
         </div>
         <div class="row">
             @yield('news-content')            
+                    
+        </div> <!-- //.row -->
+        </div> <!-- //.container -->
+    </section>
+    <!-- Notices Section -->
+    <section id="news" class="content-section clearfix">
+        <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+            <h2 class="section-title left">实验室通知 &nbsp;            
+                <b class='section-title-more'><a href={{URL::to('/notices')}}>更多通知</a></b></h2>
+            </div>
+        </div>
+        <div class="row">
+            @yield('notices-content')            
                     
         </div> <!-- //.row -->
         </div> <!-- //.container -->

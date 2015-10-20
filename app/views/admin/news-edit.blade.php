@@ -1,7 +1,7 @@
 @extends('layout.admin')
 @section('admin-content')
 <div class='item-content'>   
-        <h2 class='item-title'>新闻管理</h2> 
+        <h2 class='section-title left'>新闻管理</h2> 
         
 		<table class='table table-bordered table-hover'>
 		    <thead>
@@ -19,7 +19,7 @@
 		        <tr> 
 		            <td>{{$new->id}}</td>
 		            <td>{{$new->user_id}}</td>
-		            <td><a href={{URL::to('/edit',[0,$new->id])}}>{{$new->title}}</a></td>
+		            <td><a href={{URL::to('/news-detail',[$new->id])}}>{{$new->title}}</a></td>
 		            <td>2015</td>
 		        	<th><a href={{URL::to('/edit',[0,$new->id])}}><div class="btn" style='padding:12px 20px 12px 20px;background-color:blue;color:white'>编辑</div></a> {{Form::submit('删除',['id'=>$new->id,'class'=>'btn btn-item-delete'])}}</th>
 		        </tr> 

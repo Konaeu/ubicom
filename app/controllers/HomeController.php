@@ -15,9 +15,9 @@ class HomeController extends BaseController {
 	|
 	*/
 	public function index(){
-		$news=News::take(6)->orderBy('created_at')->get();	
-
-		return View::make('home.main')->with('news',$news);
+		$news=News::take(6)->orderBy('created_at','desc')->get();	
+		$notices=Notices::take(6)->orderBy('created_at','desc')->get();
+		return View::make('home.main')->with('news',$news)->with('notices',$notices);
 	} 
 
  
@@ -26,10 +26,20 @@ class HomeController extends BaseController {
 		return View::make('home.news')->with('news',$news);
 	}
 
+
 	public function newsDetail($id){
 		$news=News::where('id','=',$id)->get();
 		//dd($news[0]->title);
 		return View::make('home.news-detail')->with('news',$news[0]);
+	}
+	public function notices(){
+		$notices=Notices::paginate(6); //分页显示
+		return View::make('home.notice')->with('notices',$notices);
+	}
+
+	public function noticesDetail($id){
+		$notice=Notices::where('id','=',$id)->get();; //分页显示
+		return View::make('home.notice-detail')->with('notice',$notice[0]);
 	}
 
 	public function research(){
@@ -47,23 +57,19 @@ class HomeController extends BaseController {
 		return View::make('home.member');
 	}
 
-	public function course($course_name='infotheory'){
-		switch ($course_name) {
-			case 'infotheory':
-				$comments=Courses::find(1)->comments;
-				$homeworks=Courses::find(1)->homework;
-				$coursewares=Courses::find(1)->courseware;
-				$course= Courses::find(1);
-				return View::make('home.course')->with('course',$course)
-							->with('comments',$comments)
-							->with('homeworks',$homeworks)
-							->with('coursewares',$coursewares);
-
-				break;
-			
-			default:
-				# code...
-				break;
+	public function course($id=1){
+ 		$course=Courses::find($id);
+ 		if($course){ 
+	 		$comments=Courses::find($id)->comments;
+			$homeworks=Courses::find($id)->homework;
+			$coursewares=Courses::find($id)->courseware;
+			$course= Courses::find($id);
+			return View::make('home.course')->with('course',$course)
+						->with('comments',$comments)
+						->with('homeworks',$homeworks)
+						->with('coursewares',$coursewares);		 		
+		}else{
+			return Redirect::to('/');
 		}	
 	}
 
@@ -138,7 +144,6 @@ class HomeController extends BaseController {
 							->with('item_content','');
 			}
 
-			//return View::make('home.edit')->with('cat_title','新闻编辑');
 		}else if($cat_id==1){ //项目编辑
 			$item=Researches::find($item_id);
 			if($item){
@@ -162,8 +167,43 @@ class HomeController extends BaseController {
 						->with('item_content','');
 			}
 			
-		}else{
-			
+		}else if($cat_id==2){ //通知编辑
+			$item=Notices::find($item_id);
+			if($item){ //要是编辑文件存在，这时进行修改
+				return View::make('home.edit')->with('cat_title','通知编辑')
+							->with('cat_id',$cat_id)
+							->with('item_id',$item->id)							
+							->with('item_title',$item->title)
+							->with('item_content',$item->content);
+			}else{
+				return View::make('home.edit')->with('cat_title','通知编辑')
+							->with('cat_id',$cat_id)
+							->with('item_id',0)
+							->with('item_title','')
+							->with('item_content','');
+			}	
+		}else if($cat_id==3){//课程通知
+			$item=Courses::find($item_id);
+
+			if($item){ //要是编辑文件存在，这时进行修改
+				return View::make('home.edit')->with('cat_title','课程编辑')
+							->with('cat_id',$cat_id)
+							->with('item_id',$item->id)
+							->with('course_name',$item->course_name)
+							->with('teacher_address',$item->teacher_address)
+							->with('TA_name',$item->TA_name)
+							->with('TA_address',$item->TA_address)							
+							->with('course_info',$item->course_info);
+			}else{
+				return View::make('home.edit')->with('cat_title','课程编辑')
+							->with('cat_id',$cat_id)
+							->with('item_id',0)
+							->with('course_name','')
+							->with('teacher_address','')
+							->with('TA_name','')
+							->with('TA_address','')					
+							->with('course_info','');
+			}	
 		}
 	}
 
@@ -171,34 +211,64 @@ class HomeController extends BaseController {
 	public function saveItem(){
 		$cat_id=Input::get('cat_id');
 		$item_id=Input::get('id');		
-		$title=Input::get('title');
-		$abstract=Input::get('abstract');
-		$content=Input::get('content');
-		if($cat_id==0){
+		
+		if($cat_id==0){ //新闻编辑
+			$title=Input::get('title');		
+			$content=Input::get('content');
+			$abstract=Input::get('abstract');
 			$item=News::find($item_id);
-		}else if($cat_id==1){
+		}else if($cat_id==1){//项目编辑
+			$title=Input::get('title');		
+			$content=Input::get('content');
+			$abstract=Input::get('abstract');
 			$begin_time=Input::get('begin_time');
 			$end_time=Input::get('end_time');
 			$item=Researches::find($item_id);
+		}else if($cat_id==2){//通知编辑
+			//
+			$title=Input::get('title');		
+			$content=Input::get('content');
+			$item=Notices::find($item_id);
+		}else if($cat_id==3){//课程编辑
+			$course_name=Input::get('course_name');
+			$course_info=Input::get('course_info');
+			$teacher_address=Input::get('teacher_address');
+			$TA_name=Input::get('TA_name');
+			$TA_address=Input::get('TA_address');
+			$item=Courses::find($item_id);
+
 		}
 		
-		 
-		
-		if($item){ //表中已经存在该条目
-			$item->title=$title;
-			$item->abstract=$abstract;
-			$item->content=$content;			
-
-			if($cat_id==0)	{
+		if($item){ //表中已经存在该条目						
+			if($cat_id==0)	{//新闻编辑
+				$item->title=$title;
+				$item->content=$content;
+				$item->abstract=$abstract;
 				$item->save();
 				return Redirect::to(URL::to('/news-detail',[$item_id]));
-			}else if($cat_id==1){
+			}else if($cat_id==1){//项目编辑
+				$item->title=$title;
+				$item->content=$content;
+				$item->abstract=$abstract;
 				$item->begin_time=$begin_time;
 				$item->end_time=$end_time;
 				$item->save();
 				return Redirect::to(URL::to('/research-detail',[$item_id]));
-			}			 
-			
+			}else if($cat_id==2){//通知编辑
+				$item->title=$title;
+				$item->content=$content;
+				$item->save();
+				return Redirect::to(URL::to('/notice-detail',[$item_id]));
+			}else if($cat_id==3){//课程编辑
+				$item->course_name=$course_name;
+				$item->course_info=$course_info;
+				$item->teacher_address=$teacher_address;
+				$item->TA_name=$TA_name;
+				$item->TA_address=$TA_address;
+				$item->save();
+				return Redirect::to(URL::to('/course',[$item_id]));
+			}	 
+
 		}else{ //对已有条目进行更新
 			if($cat_id==0){ //新闻条目
 				News::insert([
@@ -219,6 +289,23 @@ class HomeController extends BaseController {
 				]);
 				$item=Researches::all()->last();				
 				return Redirect::to(URL::to('/research-detail',[$item->id]));					
+			}else if($cat_id==2){//通知编辑
+				Notices::insert([
+				'title'=>$title,
+				'content'=>$content
+				]);
+				$item=Notices::all()->last();				
+				return Redirect::to(URL::to('/notice-detail',[$item->id]));					
+			}else if($cat_id==3){
+				Courses::insert([
+					'course_name'=>$course_name,
+					'course_info'=>$course_info,
+					'teacher_address'=>$teacher_address,
+					'TA_name'=>$TA_name,
+					'TA_address'=>$TA_address
+					]);
+				$item=Courses::all()->last();
+				return Redirect::to(URL::to('/course',[$item->id]));					
 			}
 		}
 		//return View::make('/news-detail',[$item_id]);

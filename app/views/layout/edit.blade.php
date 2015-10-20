@@ -11,8 +11,8 @@
                 <li ><a href={{URL::to('/user-edit')}} >用户管理</a></li>
                 <li ><a href={{URL::to('/news-edit')}} >新闻管理</a></li>
                 <li ><a href={{URL::to('/research-edit')}} >项目管理</a></li>
-                <li ><a href="#notice-tag" >通知管理</a></li>
-                <li ><a href="#homework-tag" >课程管理</a></li>
+                <li ><a href={{URL::to('/notice-edit')}} >通知管理</a></li>
+                <li ><a href={{URL::to('/course-edit')}} >课程管理</a></li>
             </ul>
         </div>
         
@@ -20,7 +20,7 @@
             <h2 class="section-title left">{{$cat_title}}</h2>
  
         	@yield('form-begin')      
-
+        	@section('form-center')
 	        	<div class="col-md-12 sub-label">
 	        		内容编辑：
 	        	</div>
@@ -72,16 +72,14 @@
 			        <a class="btn" data-edit="redo" title="重做 (Ctrl/Cmd+Y)"><i class="icon-repeat"></i></a>
 			      </div>
 			      <input type="text" data-edit="inserttext" id="voiceBtn" x-webkit-speech="">
-
 			    </div>
-			    <div id="editor">
-			    	{{$item_content}}
-			    </div>	    
-			 
+			 @show
+
 			<div class='sub-area'>
 				@yield('form-end')
 
 			</div>
+
 		</div>
 		</div>
 </section>

@@ -13,8 +13,8 @@
                 <li ><a href={{URL::to('/user-edit')}} >用户管理</a></li>
                 <li ><a href={{URL::to('/news-edit')}} >新闻管理</a></li>
                 <li ><a href={{URL::to('/research-edit')}} >项目管理</a></li>
-                <li ><a href="#notice-tag" >通知管理</a></li>
-                <li ><a href="#homework-tag" >课程管理</a></li>
+                <li ><a href={{URL::to('/notice-edit')}} >通知管理</a></li>
+                <li ><a href={{URL::to('/course-edit')}}  >课程管理</a></li>
             </ul>
             </div>
             <div class='details-list col-md-10 col-sm-9'>

@@ -1,6 +1,5 @@
 @include('layout.header')
   
-
     <!-- Research Section -->
     <section id="portfolio" class="content-section clearfix">
         <div class="container">

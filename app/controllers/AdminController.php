@@ -3,7 +3,7 @@
 class AdminController extends \BaseController {
  
  	public function index(){
- 		return Redirect::to('user-edit');
+ 		return Redirect::to('news-edit');
  	}
 
  	public function userEdit(){
@@ -34,6 +34,26 @@ class AdminController extends \BaseController {
  	}
 
  	public function researchDelete(){
+ 		$news_id=Input::get('deleteId');
+ 		News::find($news_id)->delete();
+ 		return Redirect::to('news-edit');
+ 	}
+ 	public function noticeEdit(){
+ 		$notices=Notices::paginate(10);
+ 		return View::make('admin.notice-edit')->with('notices',$notices);
+ 	}
+
+ 	public function noticeDelete(){
+ 		$news_id=Input::get('deleteId');
+ 		News::find($news_id)->delete();
+ 		return Redirect::to('news-edit');
+ 	}
+ 	public function courseEdit(){
+ 		$courses=Courses::paginate(10);
+ 		return View::make('admin.course-edit')->with('courses',$courses);
+ 	}
+
+ 	public function courseDelete(){
  		$news_id=Input::get('deleteId');
  		News::find($news_id)->delete();
  		return Redirect::to('news-edit');

@@ -1,35 +1,31 @@
 @extends('layout.admin')
 @section('admin-content')
 <div class='item-content'>   
-        <h2 class='section-title left'>用户管理</h2> 
+        <h2 class='section-title left'>通知管理</h2> 
         
 		<table class='table table-bordered table-hover'>
 		    <thead>
 		        <tr>
 		            <th>ID</th>
-		            <th>姓名</th>
-		            <th>邮箱</th>
-		            <th>密码</th>		            
-		            <th>创建时间</th>
+		            <th>通知标题</th>
+		            <th>通知时间</th>		            
 		            <th>操作</th>
 		        </tr>
 		    </thead>
-		    {{Form::open(['url'=>'/user-edit'])}}
+		    {{Form::open(['url'=>'/notice-edit'])}}
 		    {{Form::text('deleteId','',['id'=>'deleteId','style'=>'display:none'])}}
-		    @foreach($users as $user)  
+		    @foreach($notices as $notice)  
 		        <tr> 
-		            <td>{{$user->id}}</td>
-		            <td>{{$user->username}}</td>
-		            <td>{{$user->email}}</td>
-		            <th>{{$user->password}}</th>
-		            <th>{{$user->created_at}}</th>
-		        	<th>{{Form::submit('删除',['id'=>$user->id,'class'=>'btn btn-item-delete'])}}</th>
+		            <td>{{$notice->id}}</td>
+		            <td><a href={{URL::to('/notice-detail',[$notice->id])}}>{{$notice->title}}</td>
+		            <td>2015</td>
+		        	<th><a href={{URL::to('/edit',[2,$notice->id])}}><div class="btn" style='padding:12px 20px 12px 20px;background-color:blue;color:white'>编辑</div></a> {{Form::submit('删除',['id'=>$notice->id,'class'=>'btn btn-item-delete'])}}</th>
 		        </tr> 
 		    @endforeach
 		    {{Form::close()}}
 		</table>
     </div><!--item-info-->
-    <?php echo $users->links(); ?> 
+    <?php echo $notices->links(); ?> 
 
  <script> //删除用户操作
  	$(document).ready(function(){

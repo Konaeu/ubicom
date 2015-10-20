@@ -22,13 +22,17 @@ Route::get('/news','HomeController@news');
 
 Route::get('/news-detail/{id}','HomeController@newsDetail');
 
+Route::get('/notices','HomeController@notices');
+
+Route::get('/notice-detail/{id}','HomeController@noticesDetail');
+
 Route::get('/member','HomeController@member');
  
 Route::get('/edit/{cat_id?}/{item_id?}','HomeController@edit');
 
 Route::post('/edit','HomeController@saveItem');
 
-Route::get('/course/{course_name?}','HomeController@course');
+Route::get('/course/{id?}','HomeController@course');
 
 Route::controller('users','UsersController');
 
@@ -48,7 +52,12 @@ Route::get('/research-edit','AdminController@researchEdit');
 
 Route::post('/research-edit','AdminController@researchDelete');
 
-/*
-Route::post('/upload_file',function(){
-	return View::make('home.upload_file');
-});*/
+Route::get('/notice-edit','AdminController@noticeEdit');
+
+Route::post('/notice-edit','AdminController@noticeDelete');
+
+Route::get('/course-edit','AdminController@courseEdit');
+
+Route::post('/course-edit','AdminController@courseDelete');
+
+ 
