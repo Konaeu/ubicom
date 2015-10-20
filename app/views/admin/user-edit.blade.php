@@ -23,7 +23,7 @@
 		            <td>{{$user->email}}</td>
 		            <th>{{$user->password}}</th>
 		            <th>{{$user->created_at}}</th>
-		        	<th>{{Form::submit('删除',['id'=>$user->id,'class'=>'btn btn-user-delete'])}}</th>
+		        	<th>{{Form::submit('删除',['id'=>$user->id,'class'=>'btn btn-item-delete'])}}</th>
 		        </tr> 
 		    @endforeach
 		    {{Form::close()}}
@@ -33,7 +33,7 @@
 
  <script> //删除用户操作
  	$(document).ready(function(){
- 		$(".btn-user-delete").click(function(){//点击提交按钮对结果进行提交，首先 获得editor里的内容，然后将其赋值到表单的input表单中
+ 		$(".btn-item-delete").click(function(){//点击提交按钮对结果进行提交，首先 获得editor里的内容，然后将其赋值到表单的input表单中
  			$('#deleteId').val($(this).attr('id'));
  		});
  	});

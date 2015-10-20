@@ -44,6 +44,9 @@ Route::get('/news-edit','AdminController@newsEdit');
 
 Route::post('/news-edit','AdminController@newsDelete');
 
+Route::get('/research-edit','AdminController@researchEdit');
+
+Route::post('/research-edit','AdminController@researchDelete');
 
 /*
 Route::post('/upload_file',function(){

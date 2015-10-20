@@ -31,7 +31,7 @@ class HomeController extends BaseController {
 		//dd($news[0]->title);
 		return View::make('home.news-detail')->with('news',$news[0]);
 	}
-	
+
 	public function research(){
 		$researches=Researches::all();		
 		return View::make('home.research')->with('researches',$researches);
@@ -145,6 +145,8 @@ class HomeController extends BaseController {
 				return View::make('home.edit')->with('cat_title','项目编辑')
 						->with('cat_id',$cat_id)
 						->with('item_id',$item->id)
+						->with('item_begin_time',$item->begin_time)
+						->with('item_end_time',$item->end_time)
 						->with('item_title',$item->title)
 						->with('item_abstract',$item->abstract)
 						->with('item_content',$item->content);
@@ -153,6 +155,8 @@ class HomeController extends BaseController {
 				return View::make('home.edit')->with('cat_title','项目编辑')
 						->with('cat_id',$cat_id)
 						->with('item_id',0)
+						->with('item_begin_time','')
+						->with('item_end_time','')
 						->with('item_title','')
 						->with('item_abstract','')
 						->with('item_content','');
@@ -173,6 +177,8 @@ class HomeController extends BaseController {
 		if($cat_id==0){
 			$item=News::find($item_id);
 		}else if($cat_id==1){
+			$begin_time=Input::get('begin_time');
+			$end_time=Input::get('end_time');
 			$item=Researches::find($item_id);
 		}
 		
@@ -181,11 +187,15 @@ class HomeController extends BaseController {
 		if($item){ //表中已经存在该条目
 			$item->title=$title;
 			$item->abstract=$abstract;
-			$item->content=$content;
-			$item->save();
+			$item->content=$content;			
+
 			if($cat_id==0)	{
+				$item->save();
 				return Redirect::to(URL::to('/news-detail',[$item_id]));
 			}else if($cat_id==1){
+				$item->begin_time=$begin_time;
+				$item->end_time=$end_time;
+				$item->save();
 				return Redirect::to(URL::to('/research-detail',[$item_id]));
 			}			 
 			
@@ -203,7 +213,9 @@ class HomeController extends BaseController {
 				Researches::insert([
 				'title'=>$title,
 				'abstract'=>$abstract,
-				'content'=>$content
+				'content'=>$content,
+				'begin_time'=>$begin_time,
+				'end_time'=>$end_time
 				]);
 				$item=Researches::all()->last();				
 				return Redirect::to(URL::to('/research-detail',[$item->id]));					

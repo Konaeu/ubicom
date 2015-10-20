@@ -5,7 +5,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class News extends Eloquent{
 	protected $table='news';
-	public $timestamps = true;
+	//public $timestamps = true;
 	protected $guarded=[];
 	protected function getDateFormat()
     {

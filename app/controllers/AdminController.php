@@ -27,4 +27,15 @@ class AdminController extends \BaseController {
  		News::find($news_id)->delete();
  		return Redirect::to('news-edit');
  	}
+
+ 	public function researchEdit(){
+ 		$researches=Researches::paginate(10);
+ 		return View::make('admin.research-edit')->with('researches',$researches);
+ 	}
+
+ 	public function researchDelete(){
+ 		$news_id=Input::get('deleteId');
+ 		News::find($news_id)->delete();
+ 		return Redirect::to('news-edit');
+ 	}
 }
