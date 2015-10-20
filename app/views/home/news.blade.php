@@ -18,4 +18,5 @@
     </div>
 
 	@endforeach
+   <?php echo $news->links(); ?> 
 @stop

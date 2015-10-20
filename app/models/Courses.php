@@ -5,7 +5,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class Courses extends Eloquent{
 	protected $table='courses';
-	public $timestamps = true;
+	//public $timestamps = true;
 	protected $guarded=[];
 
 	public function comments(){//函数名可以随意定义
@@ -14,6 +14,10 @@ class Courses extends Eloquent{
 
 	public function homework(){
 		return $this->hasMany('Homework','course_id');
+	}
+
+	public function courseware(){
+		return $this->hasMany('Courseware','course_id');
 	}
 	protected function getDateFormat()
     {

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCoursewareTable extends Migration {
+class HomeworkTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,11 @@ class CreateCoursewareTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('courseware', function(Blueprint $table)
+		Schema::create('homework', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('course_id');
+			$table->text('homework_item');
 			$table->timestamps();
 		});
 	}
@@ -26,7 +28,7 @@ class CreateCoursewareTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('courseware');
+		Schema::drop('homework');
 	}
 
 }

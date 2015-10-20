@@ -29,3 +29,23 @@ Route::get('/edit/{cat_id?}/{item_id?}','HomeController@edit');
 Route::post('/edit','HomeController@saveItem');
 
 Route::get('/course/{course_name?}','HomeController@course');
+
+Route::controller('users','UsersController');
+
+Route::post('/upload_file','HomeController@upload');
+
+Route::get('/admin','AdminController@index');
+
+Route::get('/user-edit','AdminController@userEdit');
+
+Route::post('/user-edit','AdminController@userDelete');
+
+Route::get('/news-edit','AdminController@newsEdit');
+
+Route::post('/news-edit','AdminController@newsDelete');
+
+
+/*
+Route::post('/upload_file',function(){
+	return View::make('home.upload_file');
+});*/
