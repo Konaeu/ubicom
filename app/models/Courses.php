@@ -5,7 +5,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class Courses extends Eloquent{
 	protected $table='courses';
-	//public $timestamps = true;
+	public $timestamps = true;
 	protected $guarded=[];
 
 	public function comments(){//函数名可以随意定义

@@ -1,7 +1,9 @@
 @extends('layout.admin')
 @section('admin-content')
 <div class='item-content'>   
-        <h2 class='section-title left'>新闻管理</h2> 
+        <h2 class='section-title left'>新闻管理
+			<a href={{URL::to('/edit',[0,null])}}><div class="btn" style='padding:12px 20px 12px 20px;background-color:blue;color:white'>创建新闻</div></a> 
+        </h2> 
         
 		<table class='table table-bordered table-hover'>
 		    <thead>

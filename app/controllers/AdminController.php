@@ -44,9 +44,9 @@ class AdminController extends \BaseController {
  	}
 
  	public function noticeDelete(){
- 		$news_id=Input::get('deleteId');
- 		News::find($news_id)->delete();
- 		return Redirect::to('news-edit');
+ 		$notice_id=Input::get('deleteId');
+ 		Notices::find($notice_id)->delete();
+ 		return Redirect::to('notice-edit');
  	}
  	public function courseEdit(){
  		$courses=Courses::paginate(10);
@@ -54,8 +54,8 @@ class AdminController extends \BaseController {
  	}
 
  	public function courseDelete(){
- 		$news_id=Input::get('deleteId');
- 		News::find($news_id)->delete();
- 		return Redirect::to('news-edit');
+ 		$course_id=Input::get('deleteId');
+ 		Courses::find($course_id)->delete();
+ 		return Redirect::to('course-edit');
  	}
 }

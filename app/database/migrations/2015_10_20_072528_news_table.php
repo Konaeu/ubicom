@@ -5,6 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class NewsTable extends Migration {
 
+	public $timestamps=false;
 	/**
 	 * Run the migrations.
 	 *

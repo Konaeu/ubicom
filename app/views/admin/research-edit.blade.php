@@ -1,7 +1,9 @@
 @extends('layout.admin')
 @section('admin-content')
 <div class='item-content'>   
-        <h2 class='section-title left'>项目管理</h2> 
+        <h2 class='section-title left'>项目管理
+        	<a href={{URL::to('/edit',[1,null])}}><div class="btn" style='padding:12px 20px 12px 20px;background-color:blue;color:white'>创建项目</div></a> 
+        </h2> 
 		<table class='table table-bordered table-hover'>
 		    <thead>
 		        <tr>
@@ -17,7 +19,7 @@
 		    @foreach($researches as $research)  
 		        <tr> 
 		            <td>{{$research->id}}</td>
-		            <td><a href={{URL::to('/edit',[1,$research->id])}}>{{$research->title}}</td>
+		            <td><a href={{URL::to('/research-detail',[$research->id])}}>{{$research->title}}</td>
 		            <td>{{$research->begin_time}}</td>
 		            <td>{{$research->end_time}}</td>
 		        	<th><a href={{URL::to('/edit',[1,$research->id])}}><div class="btn" style='padding:12px 20px 12px 20px;background-color:blue;color:white'>编辑</div></a> {{Form::submit('删除',['id'=>$research->id,'class'=>'btn btn-item-delete'])}}</th>

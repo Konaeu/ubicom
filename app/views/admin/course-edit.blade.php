@@ -1,7 +1,11 @@
 @extends('layout.admin')
 @section('admin-content')
 <div class='item-content'>   
-        <h2 class='section-title left'>课程管理</h2> 
+        <h2 class='section-title '>
+        	 课程管理 
+        	<a href={{URL::to('/edit',[3,null])}}><div class="btn right " style='padding:12px 20px 12px 20px;background-color:blue;color:white'>创建新课程</div></a> 
+        </h2> 
+
         
 		<table class='table table-bordered table-hover'>
 		    <thead>

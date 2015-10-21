@@ -5,7 +5,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class Comments extends Eloquent{
 	protected $table='comments';
-	//protected $timestamps = true;
+	public $timestamps = true;
 	protected $guarded=[];
 
 	public function course(){
@@ -16,4 +16,7 @@ class Comments extends Eloquent{
     {
         return 'U';
     }
+    public function freshTimestamp() {
+    	return time();
+  	}
 }
