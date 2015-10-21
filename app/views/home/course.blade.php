@@ -59,14 +59,13 @@
                         </tr> 
                     @endforeach
                 </table>
-             
-          
-        {{Form::open(['url'=>'upload_file','enctype'=>'multipart/form-data'])}}
-            {{Form::file('file')}}
-            {{Form::text('label_id',$courseware->id)}}
-            {{Form::submit('提交',['class'=>'btn btn-success'])}}
-        {{Form::close()}}
-        <p> 这是课程简介这是课程简介这是课程简介这是课程简介这是课程简介这是课程简介这是课程简介这是课程简介这是课程简介这是课程简介这是课程简介这是课程简介</p>
+        @if(0)
+            {{Form::open(['url'=>'upload_file','enctype'=>'multipart/form-data'])}}
+                {{Form::file('file')}}
+                {{Form::text('label_id',$courseware->id)}}
+                {{Form::submit('提交',['class'=>'btn btn-success'])}}
+            {{Form::close()}}  
+        @endif
 </div>
 
 

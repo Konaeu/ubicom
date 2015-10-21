@@ -61,3 +61,9 @@ Route::get('/course-edit','AdminController@courseEdit');
 Route::post('/course-edit','AdminController@courseDelete');
 
  
+ //用户空间路由
+Route::group(array('prefix' => 'home'), function()
+{
+	Route::get('/','UsersController@getLogin');
+	Route::get('/{uservisiting}',array('as' => 'home/{uservisiting}','uses' => 'UsersController@showHome'));
+});

@@ -9,7 +9,7 @@
 					{{ Form::open(array('url'=>'users/signin', 'class'=>'form-signin')) }}
 					<fieldset>
 						<div class="form-group">
-						 {{ Form::text('email', null, array('class'=>'form-control', 'placeholder'=>'邮箱')) }}
+						 {{ Form::text('username', null, array('class'=>'form-control', 'placeholder'=>'用户名')) }}
 						</div>
 						<div class="form-group">
 						 {{ Form::password('password', array('class'=>'form-control', 'placeholder'=>'密码')) }} 

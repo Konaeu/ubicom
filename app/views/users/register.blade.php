@@ -7,7 +7,7 @@
                     <h3 class="panel-title">欢迎注册</h3>
                 </div>
                 <div class="panel-body">
-                {{Form::open(array('url'=>'users/create', 'class'=>'form-signup')) }}
+                {{ Form::open(array('url'=>'users/create', 'class'=>'form-signup')) }}
                     <ul>
                         @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
