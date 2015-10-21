@@ -182,28 +182,44 @@ class HomeController extends BaseController {
 							->with('item_title','')
 							->with('item_content','');
 			}	
-		}else if($cat_id==3){//课程通知
-			$item=Courses::find($item_id);
+		}else if($cat_id==3){//课程编辑
+			$item=Courses::find($item_id);		
 
 			if($item){ //要是编辑文件存在，这时进行修改
-				return View::make('home.edit')->with('cat_title','课程编辑')
-							->with('cat_id',$cat_id)
-							->with('item_id',$item->id)
-							->with('course_name',$item->course_name)
-							->with('teacher_address',$item->teacher_address)
-							->with('TA_name',$item->TA_name)
-							->with('TA_address',$item->TA_address)							
-							->with('course_info',$item->course_info);
-			}else{
-				return View::make('home.edit')->with('cat_title','课程编辑')
-							->with('cat_id',$cat_id)
-							->with('item_id',0)
-							->with('course_name','')
-							->with('teacher_address','')
-							->with('TA_name','')
-							->with('TA_address','')					
-							->with('course_info','');
+				//$homeworks=Courses::find($item_id)->homework;
+				//$coursewares=Courses::find($item_id)->courseware;
+
+			}else{//创建新课程：同时创建homework，coursewares
+				$item=new Courses;
+				$item->course_name='';
+
+				$item->save();
+				$item_id=$item->id;
+				
+				//创建相关的作业：homework
+				$homework=new Homework;
+				$homework->course_id=$item_id;
+				$homework->save();
+				$homework_id=$homework->id;
+				
+				//创建相关的课件表：courseware
+				$courseware=new Courseware;
+				$courseware->course_id=$item_id;
+				$courseware->save();
 			}	
+
+			$homeworks=Courses::find($item_id)->homework;
+			$coursewares=Courses::find($item_id)->courseware;
+				return View::make('home.edit')->with('cat_title','课程编辑')
+					->with('cat_id',$cat_id)
+					->with('item_id',$item->id)
+					->with('course_name',$item->course_name)
+					->with('teacher_address',$item->teacher_address)
+					->with('TA_name',$item->TA_name)
+					->with('TA_address',$item->TA_address)							
+					->with('course_info',$item->course_info)
+					->with('homeworks',$homeworks)
+					->with('coursewares',$coursewares);
 		}
 	}
 
@@ -236,6 +252,21 @@ class HomeController extends BaseController {
 			$TA_name=Input::get('TA_name');
 			$TA_address=Input::get('TA_address');
 			$item=Courses::find($item_id);
+			$homeworks=Courses::find($item_id)->homework;
+			$coursewares=Courses::find($item_id)->courseware;
+			foreach($homeworks as $homework){
+				$update_item=Homework::find($homework->id);
+				$update_item->homework_item=Input::get('homework_label'.$homework->id);
+				$update_item->submit_deadline=Input::get('homework_submit_time'.$homework->id);
+				$update_item->deliver_deadline=Input::get('homework_deliver_time'.$homework->id);	
+				$update_item->save();
+			}
+			foreach($coursewares as $courseware){
+				$update_item=Courseware::find($courseware->id);
+				$update_item->label=Input::get('courseware_label'.$courseware->id);
+				$update_item->save();
+			}
+
 
 		}
 		

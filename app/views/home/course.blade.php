@@ -46,7 +46,7 @@
                         <tr>
                             <th>章节</th>
                             <th>内容</th>
-                            <th>链接</th>
+                            <th>课件</th>
                             <th>更新时间</th>
                         </tr>
                     </thead>

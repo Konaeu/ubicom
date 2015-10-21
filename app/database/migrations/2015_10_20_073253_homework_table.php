@@ -17,6 +17,8 @@ class HomeworkTable extends Migration {
 			$table->increments('id');
 			$table->integer('course_id');
 			$table->text('homework_item');
+			$table->text('submit_deadline');
+			$table->text('deliver_deadline');
 			$table->timestamps();
 		});
 	}
