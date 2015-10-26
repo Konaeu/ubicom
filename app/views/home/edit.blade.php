@@ -40,9 +40,9 @@
                 </div>
                  <div class='col-md-12 col-sm-11'>                    
                     {{Form::label('Homeworks_label','作业编辑:',['class'=>'sub-label'])}} 
-                    <div id='homework_add_click',class="btn" style='padding:12px 20px 12px 20px;background-color:blue;color:white'>发布新作业  </div>
-                     
+                    <div id='homework_add_click',class="btn" style='padding:12px 20px 12px 20px;background-color:blue;color:white'>发布新作业 </div>
                     {{Form::text('homework_add_count',0,['id'=>'homework_add_count','style'=>'display:none'])}}
+                     
                    
                     <table class='table table-bordered table-hover' id='homeworks_show'>
                         <thead>
@@ -53,10 +53,11 @@
                                 <th>发放时间</th>
                             </tr>
                         </thead>
-                        @if($homeworks)
+                        @if($homeworks)  
+                        <div style='display:none'>{{$count=0}}</div>                          
                             @foreach($homeworks as $homework)  
                                 <tr> 
-                                    <td>{{$homework->id}}</td>
+                                    <td>{{++$count}}</td>
                                     <td>{{Form::text('homework_label'.$homework->id,$homework->homework_item,['class'=>'sub-text'])}}</td>
                                     <th>{{Form::text('homework_submit_time'.$homework->id,$homework->deliver_deadline,['class'=>'sub-text'])}}</th>
                                     <th>{{Form::text('homework_deliver_time'.$homework->id,$homework->deliver_deadline,['id'=>'sub-title','class'=>'sub-text'])}}</th>
@@ -70,8 +71,7 @@
                 
                  <div class='col-md-12 col-sm-11'>                    
                     {{Form::label('Coursewares_label','课件编辑:',['class'=>'sub-label'])}}  
-                    <div id='courseware_add_click',class="btn" style='padding:12px 20px 12px 20px;background-color:blue;color:white'>发布新课件 </div>
-                    
+                    <div id='courseware_add_click',class="btn" style='padding:12px 20px 12px 20px;background-color:blue;color:white'>发布新课件 </div>                    
                     {{Form::text('courseware_add_count',0,['id'=>'courseware_add_count','style'=>'display:none'])}}
                     <table class='table table-bordered table-hover' id='coursewares-show'>
                         <thead>
@@ -82,10 +82,11 @@
                                 <th>更新时间</th>
                             </tr>
                         </thead>
-                        @if($coursewares)
+                        @if($coursewares) 
+                            <div style='display:none'>{{$count=0}}</div>                           
                             @foreach($coursewares as $courseware)  
                                 <tr> 
-                                    <td>{{$courseware->id}}</td>
+                                    <td>{{++$count}}</td>
                                     <td>{{Form::text('courseware_label'.$courseware->id,$courseware->label,['id'=>'sub-title','class'=>'sub-text'])}}</td>
                                     <td><a href={{URL::to($courseware->source)}}>ppt</></td>
                                     <td>2015</td>

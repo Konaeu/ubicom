@@ -32,9 +32,26 @@
             <span></span>
             <a class='title-link' href='/course/#'>作业</a>
         </h2>
-        @foreach($homeworks as $homework)
-        <p>{{$homework->homework_item}}</p>
-        @endforeach
+        <table class='table table-bordered table-hover'>
+                    <thead>
+                        <tr>
+                            <th>章节</th>
+                            <th>作业内容</th>
+                            <th>提交时间</th>
+                            <th>发放时间</th>
+                        </tr>
+                    </thead>
+                    <div style='display:none'>{{$count=0}}</div>
+                     @foreach($homeworks as $homework)
+                        <tr> 
+                            <td>{{++$count}}</td>
+                            <td>{{$homework->homework_item}}</td>
+                            <td>2014</td>
+                            <th>2015</th>
+                        </tr> 
+                    @endforeach
+        </table>
+ 
 </div>
 <div id='lecture-tag' >  
         <h2 class="feature-title">
@@ -50,15 +67,16 @@
                             <th>更新时间</th>
                         </tr>
                     </thead>
+                    <div style='display:none'>{{$count=0}}</div>
                     @foreach($coursewares as $courseware)  
                         <tr> 
-                            <td>1</td>
+                            <td>{{++$count}}</td>
                             <td>{{$courseware->label}}</td>
                             <td><a href={{URL::to($courseware->source)}}>ppt</></td>
                             <th>2015</th>
                         </tr> 
                     @endforeach
-                </table>
+        </table>
         @if(0)
             {{Form::open(['url'=>'upload_file','enctype'=>'multipart/form-data'])}}
                 {{Form::file('file')}}

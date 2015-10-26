@@ -188,22 +188,8 @@ class HomeController extends BaseController {
 			}else{//创建新课程：同时创建homework，coursewares
 				$item=new Courses;
 				$item->course_name='';
-
 				$item->save();
 				$item_id=$item->id;
-				
-				/*
-				//创建相关的作业：homework
-				$homework=new Homework;
-				$homework->course_id=$item_id;
-				$homework->save();
-				$homework_id=$homework->id;
-				
-				//创建相关的课件表：courseware
-				$courseware=new Courseware;
-				$courseware->course_id=$item_id;
-				$courseware->save();
-				*/
 			}	
 
 			$homeworks=Courses::find($item_id)->homework;
