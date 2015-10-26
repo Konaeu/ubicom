@@ -54,8 +54,10 @@ class AdminController extends \BaseController {
  	}
 
  	public function courseDelete(){
- 		$course_id=Input::get('deleteId');
- 		Courses::find($course_id)->delete();
+ 		$course_id=Input::get('deleteId'); 			
+		Homework::where('course_id','=',$course_id)->delete();
+		Courseware::where('course_id','=',$course_id)->delete();
+		Courses::find($course_id)->delete();
  		return Redirect::to('course-edit');
  	}
 }
