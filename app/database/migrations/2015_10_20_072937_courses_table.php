@@ -23,7 +23,9 @@ class CoursesTable extends Migration {
 			$table->string('TA_name',50)->default('');
 			$table->string('TA_mail',50)->default('');
 			$table->string('TA_address',100)->default('');
-			$table->timestamps();
+			$table->dateTime('created_at');
+			$table->dateTime('updated_at');
+			//$table->timestamps();
 		});
 	}
 

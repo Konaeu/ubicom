@@ -5,10 +5,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class Researches extends Eloquent{
 	protected $table='researches';
-	//public $timestamps = true;
+	public $timestamps = false;
 	protected $guarded=[];
-	protected function getDateFormat()
-    {
-        return 'U';
-    }
+
 }

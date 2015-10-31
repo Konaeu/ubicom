@@ -5,15 +5,12 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class Homework extends Eloquent{
 	protected $table='homework';
-	public $timestamps = true;
+	public $timestamps = false;
 	protected $guarded=[];
 
 	public function course(){
 		return $this->belongsTo('Courses','course_id');//
 	}
 
-	protected function getDateFormat()
-    {
-        return 'U';
-    }
+
 }

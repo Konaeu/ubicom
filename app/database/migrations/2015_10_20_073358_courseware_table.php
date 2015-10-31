@@ -18,7 +18,8 @@ class CoursewareTable extends Migration {
 			$table->integer('course_id');
 			$table->text('label'); //保存章节介绍
 			$table->string('source',100); //保存ppt的位置
-			$table->timestamps();
+			$table->dateTime('created_at');
+			$table->dateTime('updated_at');
 		});
 	}
 

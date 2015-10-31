@@ -19,7 +19,8 @@ class HomeworkTable extends Migration {
 			$table->text('homework_item');
 			$table->text('submit_deadline');
 			$table->text('deliver_deadline');
-			$table->timestamps();
+			$table->dateTime('created_at');
+			$table->dateTime('updated_at');
 		});
 	}
 

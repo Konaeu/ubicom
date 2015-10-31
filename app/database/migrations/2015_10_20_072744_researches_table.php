@@ -21,7 +21,8 @@ class ResearchesTable extends Migration {
 			$table->text('content');
 			$table->string('begin_time');
 			$table->string('end_time');
-			$table->timestamps();
+			$table->dateTime('created_at');
+			$table->dateTime('updated_at');
 		});
 	}
 

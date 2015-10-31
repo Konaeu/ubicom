@@ -17,7 +17,8 @@ class CommentsTable extends Migration {
 			$table->increments('id');
 			$table->integer('course_id');
 			$table->text('comment');
-			$table->timestamps();
+			$table->dateTime('created_at');
+			$table->dateTime('updated_at');
 		});
 	}
 

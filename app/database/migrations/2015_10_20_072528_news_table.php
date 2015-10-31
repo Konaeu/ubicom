@@ -20,7 +20,8 @@ class NewsTable extends Migration {
 			$table->string('title',100);
 			$table->string('abstract');
 			$table->text('content');
-			$table->timestamps();
+			$table->dateTime('created_at');
+			$table->dateTime('updated_at');
 		});
 	}
 

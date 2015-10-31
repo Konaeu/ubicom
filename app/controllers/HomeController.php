@@ -60,7 +60,8 @@ class HomeController extends BaseController {
 	public function course($id=1){
  		$course=Courses::find($id);
  		if($course){ 
-	 		$comments=Courses::find($id)->comments;
+	 		$comments=Courses::find($id)->comments()->orderBy('created_at','desc')->get();
+
 			$homeworks=Courses::find($id)->homework;
 			$coursewares=Courses::find($id)->courseware;
 			$course= Courses::find($id);
@@ -86,10 +87,10 @@ class HomeController extends BaseController {
 
   		//上传文件
   		if ($_FILES[$input_name]["error"] > 0){
-		 	dd( "Error: " . $_FILES[$input_name]["error"] . "<br />");
+		 	//dd( "Error: " . $_FILES[$input_name]["error"] . "<br />");
 		 }else{
 		 	if(file_exists($parent_dir_name.$sub_dir_name.$_FILES[$input_name]["name"])){
-		  		dd( $_FILES[$input_name]["name"]. " already exists. ");
+		  		//dd( $_FILES[$input_name]["name"]. " already exists. ");
 		  	}else{	
 		  		$filename=iconv("UTF-8", "gb2312",$parent_dir_name.$sub_dir_name.$_FILES[$input_name]["name"]);	  		 
 				move_uploaded_file($_FILES[$input_name]["tmp_name"],$filename);	  		
@@ -109,13 +110,17 @@ class HomeController extends BaseController {
 			$source_address=HomeController::upload_files($input_name,$parent_dir_name,$sub_dir_name);
 			return $source_address;
 		}else{
-			 
 			return '';
 		}
-	 	
 	}
 
-	
+	public function delete_file($file_source){ //删除指定的文件，这里pulic为根文件夹
+		if(file_exists($file_source)){			
+			unlink($file_source);
+		}else{
+			//dd('donnot exists');
+		}
+	}
 
 
 
@@ -199,16 +204,20 @@ class HomeController extends BaseController {
 
 			$homeworks=Courses::find($item_id)->homework;
 			$coursewares=Courses::find($item_id)->courseware;
+			$course_notices=Courses::find($item_id)->comments;
 				return View::make('home.edit')->with('cat_title','课程编辑')
 					->with('cat_id',$cat_id)
 					->with('item_id',$item->id)
 					->with('course_name',$item->course_name)
 					->with('teacher_address',$item->teacher_address)
+					->with('teacher_mail',$item->teacher_mail)
 					->with('TA_name',$item->TA_name)
-					->with('TA_address',$item->TA_address)							
+					->with('TA_address',$item->TA_address)	
+					->with('TA_mail',$item->TA_mail)						
 					->with('course_info',$item->course_info)
 					->with('homeworks',$homeworks)
-					->with('coursewares',$coursewares);
+					->with('coursewares',$coursewares)
+					->with('course_notices',$course_notices);
 		}
 	}
 
@@ -239,11 +248,20 @@ class HomeController extends BaseController {
 			$course_name=Input::get('course_name');
 			$course_info=Input::get('course_info');
 			$teacher_address=Input::get('teacher_address');
+			$teacher_mail=Input::get('teacher_mail');
 			$TA_name=Input::get('TA_name');
 			$TA_address=Input::get('TA_address');
+			$TA_mail=Input::get('TA_mail');
 			$item=Courses::find($item_id);
 			$homeworks=Courses::find($item_id)->homework;
 			$coursewares=Courses::find($item_id)->courseware;
+			$course_notices=Courses::find($item_id)->comments;
+			foreach ($course_notices as $notice) {
+				$update_notice=Comments::find($notice->id);				
+				$update_notice->comment=Input::get('course_notice_content'.$notice->id);
+				$update_notice->updated_at=date("Y-m-d H:i:s");
+				$update_notice->save();
+			}
 			foreach($homeworks as $homework){//对已有项进行编辑
 				$delete_or_not=Input::get('homework_delete'.$homework->id);
 				if($delete_or_not){ //如果标记为删除则将已有作业进行删除
@@ -253,13 +271,24 @@ class HomeController extends BaseController {
 					$update_item=Homework::find($homework->id);
 					$update_item->homework_item=Input::get('homework_label'.$homework->id);
 					$update_item->submit_deadline=Input::get('homework_submit_time'.$homework->id);
-					$update_item->deliver_deadline=Input::get('homework_deliver_time'.$homework->id);	
+					$update_item->deliver_deadline=Input::get('homework_deliver_time'.$homework->id);
+					$update_item->updated_at=date("Y-m-d H:i:s");
 					$update_item->save();
 				}
 			}
 			foreach($coursewares as $courseware){ 
 				$update_item=Courseware::find($courseware->id);
 				$update_item->label=Input::get('courseware_label'.$courseware->id);
+				$update_file_source='courseware_ppt'.$courseware->id;				 
+				$new_source=HomeController::upload_course($item_id,$update_file_source);
+				if($new_source!=""){//跟新源的同时将旧的课件删除
+					HomeController::delete_file($update_item->source);
+					$update_item->source=$new_source;
+					
+				}else{
+
+				}
+				$update_item->updated_at=date("Y-m-d H:i:s");
 				$update_item->save();
 			}
 		}
@@ -289,12 +318,28 @@ class HomeController extends BaseController {
 				$item->course_name=$course_name;
 				$item->course_info=$course_info;
 				$item->teacher_address=$teacher_address;
+				$item->teacher_mail=$teacher_mail;
 				$item->TA_name=$TA_name;
 				$item->TA_address=$TA_address;
+				$item->TA_mail=$TA_mail;
 				$item->save();
+				$course_notices_add_count=Input::get('course_notice_add_count');
+				if($course_notices_add_count){//增加新的通知
+					for($i=1;$i<=$course_notices_add_count;$i++){
+						$add_or_not=Input::get('course_notice_add_or_not'.$i);
+						if(!$add_or_not){
+							$notice=new Comments;
+							$notice->course_id=$item_id;	
+							$notice->comment=Input::get('course_notice_add_content'.$i);
+							$notice->created_at=date("Y-m-d H:i:s");		
+							$notice->updated_at=date("Y-m-d H:i:s");
+							$notice->save();
+						}			
+					}
+				}
+
 				$homework_add_count=Input::get('homework_add_count');
 				if($homework_add_count){//当添加了新的作业，将其添加到homework数据库中
-
 					for($i=1;$i<=$homework_add_count;$i++){
 						$add_or_not=Input::get('homework_add_or_not'.$i);
 						if(!$add_or_not){
@@ -303,6 +348,8 @@ class HomeController extends BaseController {
 							$homework->homework_item=Input::get('homework_add_item'.$i);
 							$homework->submit_deadline=Input::get('homework_add_submit_time'.$i);
 							$homework->deliver_deadline=Input::get('homework_add_deliver_time'.$i);
+							$homework->created_at=date("Y-m-d H:i:s");
+							$homework->updated_at=date("Y-m-d H:i:s");
 							$homework->save();
 						}						
 					}
@@ -316,6 +363,8 @@ class HomeController extends BaseController {
 						//先将课件上传到数据库中
 						$file_source='courseware_add_source'.$i;						 
 						$courseware->source=HomeController::upload_course($item_id,$file_source);
+						$courseware->created_at=date("Y-m-d H:i:s");
+						$courseware->updated_at=date("Y-m-d H:i:s");
 						$courseware->save();
 					}
 				}
