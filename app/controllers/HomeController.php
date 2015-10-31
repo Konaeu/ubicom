@@ -100,14 +100,19 @@ class HomeController extends BaseController {
 
 	public function upload_course($course_id,$file_source){			
 		$input_name=$file_source;	 
-
 		$pathinfo = pathinfo($_FILES[$file_source]["tmp_name"]);
 		 
-	 	$pathinfo = pathinfo($pathinfo['dirname']);//获取临时保存文件的路经
-		$parent_dir_name= $pathinfo['dirname']."\htdocs\ubicom\public\\";//将文件保存路径修改到public update中
-		$sub_dir_name="upload\courses\\".$course_id.'\\';
-		$source_address=HomeController::upload_files($input_name,$parent_dir_name,$sub_dir_name);
-		return $source_address;
+		if(!empty($_FILES[$file_source]["tmp_name"])){
+			$pathinfo = pathinfo($pathinfo['dirname']);//获取临时保存文件的路经
+			$parent_dir_name= $pathinfo['dirname']."\htdocs\ubicom\public\\";//将文件保存路径修改到public update中
+			$sub_dir_name="upload\courses\\".$course_id.'\\';
+			$source_address=HomeController::upload_files($input_name,$parent_dir_name,$sub_dir_name);
+			return $source_address;
+		}else{
+			 
+			return '';
+		}
+	 	
 	}
 
 	
@@ -240,11 +245,17 @@ class HomeController extends BaseController {
 			$homeworks=Courses::find($item_id)->homework;
 			$coursewares=Courses::find($item_id)->courseware;
 			foreach($homeworks as $homework){//对已有项进行编辑
-				$update_item=Homework::find($homework->id);
-				$update_item->homework_item=Input::get('homework_label'.$homework->id);
-				$update_item->submit_deadline=Input::get('homework_submit_time'.$homework->id);
-				$update_item->deliver_deadline=Input::get('homework_deliver_time'.$homework->id);	
-				$update_item->save();
+				$delete_or_not=Input::get('homework_delete'.$homework->id);
+				if($delete_or_not){ //如果标记为删除则将已有作业进行删除
+					$delete_item=Homework::find($homework->id);
+					$delete_item->delete();
+				}else{
+					$update_item=Homework::find($homework->id);
+					$update_item->homework_item=Input::get('homework_label'.$homework->id);
+					$update_item->submit_deadline=Input::get('homework_submit_time'.$homework->id);
+					$update_item->deliver_deadline=Input::get('homework_deliver_time'.$homework->id);	
+					$update_item->save();
+				}
 			}
 			foreach($coursewares as $courseware){ 
 				$update_item=Courseware::find($courseware->id);
@@ -283,13 +294,17 @@ class HomeController extends BaseController {
 				$item->save();
 				$homework_add_count=Input::get('homework_add_count');
 				if($homework_add_count){//当添加了新的作业，将其添加到homework数据库中
+
 					for($i=1;$i<=$homework_add_count;$i++){
-						$homework=new Homework;
-						$homework->course_id=$item_id;						 
-						$homework->homework_item=Input::get('homework_add_item'.$i);
-						$homework->submit_deadline=Input::get('homework_add_submit_time'.$i);
-						$homework->deliver_deadline=Input::get('homework_add_deliver_time'.$i);
-						$homework->save();						
+						$add_or_not=Input::get('homework_add_or_not'.$i);
+						if(!$add_or_not){
+							$homework=new Homework;
+							$homework->course_id=$item_id;						 
+							$homework->homework_item=Input::get('homework_add_item'.$i);
+							$homework->submit_deadline=Input::get('homework_add_submit_time'.$i);
+							$homework->deliver_deadline=Input::get('homework_add_deliver_time'.$i);
+							$homework->save();
+						}						
 					}
 				}
 				$courseware_add_count=Input::get('courseware_add_count');

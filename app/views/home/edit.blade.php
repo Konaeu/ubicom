@@ -51,21 +51,22 @@
                                 <th>内容</th>
                                 <th>提交截至时间</th>
                                 <th>发放时间</th>
+                                <th>删除</th>
                             </tr>
                         </thead>
                         @if($homeworks)  
                         <div style='display:none'>{{$count=0}}</div>                          
-                            @foreach($homeworks as $homework)  
+                            @foreach($homeworks as $homework)                              
                                 <tr> 
-                                    <td>{{++$count}}</td>
-                                    <td>{{Form::text('homework_label'.$homework->id,$homework->homework_item,['class'=>'sub-text'])}}</td>
-                                    <th>{{Form::text('homework_submit_time'.$homework->id,$homework->deliver_deadline,['class'=>'sub-text'])}}</th>
-                                    <th>{{Form::text('homework_deliver_time'.$homework->id,$homework->deliver_deadline,['id'=>'sub-title','class'=>'sub-text'])}}</th>
+                                        <td>{{++$count}}</td>
+                                        <td>{{Form::text('homework_label'.$homework->id,$homework->homework_item,['class'=>'sub-text'])}}</td>
+                                        <td>{{Form::text('homework_submit_time'.$homework->id,$homework->deliver_deadline,['class'=>'sub-text'])}}</td>
+                                        <td>{{Form::text('homework_deliver_time'.$homework->id,$homework->deliver_deadline,['class'=>'sub-text'])}}</td>
+                                        <td><div class="homework_delete_btn"  style='padding:12px 20px 12px 20px;background-color:#e04d47;color:white'>删除</div></a>{{Form::text('homework_delete'.$homework->id,'0',['class'=>'deleteOrNot','style'=>'display:none'])}}</td>                     
                                 </tr> 
                             @endforeach
                         @endif
                         <!--发布新的新闻-->
-
                     </table>
                 </div> 
                 
@@ -84,7 +85,7 @@
                         </thead>
                         @if($coursewares) 
                             <div style='display:none'>{{$count=0}}</div>                           
-                            @foreach($coursewares as $courseware)  
+                            @foreach($coursewares as $courseware)     
                                 <tr> 
                                     <td>{{++$count}}</td>
                                     <td>{{Form::text('courseware_label'.$courseware->id,$courseware->label,['id'=>'sub-title','class'=>'sub-text'])}}</td>
@@ -111,7 +112,8 @@
             var $item='homework_add_item'+$v1;   
             var $submit_time='homework_add_submit_time'+$v1; 
             var $deliver_time='homework_add_deliver_time'+$v1;
-            $('#homeworks_show').append('<tr><td>'+$v1+'</td> <td><input class="sub-text" name='+$item+' type="text" value=""></td>  <td><input class="sub-text" name='+$submit_time+' type="text" value=""></td> <td><input class="sub-text" name='+$deliver_time+' type="text" value=""></td>   </tr>');                 
+            var $add_or_not='homework_add_or_not'+$v1;
+            $('#homeworks_show').append($('<tr><td>'+$v1+'</td> <td><input class="sub-text" name='+$item+' type="text" value=""></td>  <td><input class="sub-text" name='+$submit_time+' type="text" value=""></td> <td><input class="sub-text" name='+$deliver_time+' type="text" value=""></td> <td><div class="homework_delete_btn" style="padding:12px 20px 12px 20px;background-color:#e04d47;color:white;">删除</div><input class=" deleteOrNot" name='+$add_or_not+' type="text" value="0" style="display:none">  </td>  </tr>'));                 
         });
         $('#courseware_add_click').click(function(){ //增加新的k课件信息
             var $v1=Number($('#courseware_add_count').val())+1;
@@ -121,6 +123,18 @@
             var $deliver_time='courseware_add_deliver_time'+$v1;
             $('#coursewares-show').append('<tr><td>'+$v1+'</td> <td><input class="sub-text" name='+$label+' type="text" value=""></td>  <td><input name='+$file_source+' type="file"></td> <td>2015</td>   </tr>');                 
         });
+        
+        $('body').on('click','.homework_delete_btn',function(){
+            if($(this).html()=='删除'){  
+                $(this).html('取消').css('background-color','blue');         
+                $(this).parent('td').children('.deleteOrNot').val(1);  
+            }else{
+                $(this).html('删除').css('background-color','#e04d47');
+                $(this).parent('td').children('.deleteOrNot').val(0);
+            }
+
+        });
+
     });
  </script>
 
